@@ -8,33 +8,27 @@ from src.logger import logging
 
 class CleaningData:
     """
-    _summary_:
-
+    Summary: This class encapsulates a set of methods designed to cleanse the dataframe, preparing it for subsequent experimentation and analysis.
     """
 
     logging.info("Inside Data cleaning class.")
 
     def __init__(self, df:pd.DataFrame) -> None:
-        """
-        _summary_:
-
-        Args:
-            df (pd.DataFrame): _description_
-        """
         logging.info('Initializer initialized.')
         self.df = df
 
 
     def Step_01_workclass(self, df:pd.DataFrame) -> pd.DataFrame:
         """
-        _summary_:
+        Summary: This function is designed to handle missing values and remove extra spaces in the 'workclass' column of the input DataFrame.
 
         Args:
-            df (pd.DataFrame): _description_
+            df (pd.DataFrame): The input DataFrame containing the 'workclass' column.
 
         Returns:
-            pd.DataFrame: _description_
+            pd.DataFrame: A cleaned DataFrame with the 'workclass' column processed to replace NaN values and eliminate extra spaces.
         """
+
         logging.info("Inside step 01 of data cleaning.")
 
         try:
@@ -58,13 +52,14 @@ class CleaningData:
 
     def Step_02_education(self, df:pd.DataFrame) -> pd.DataFrame:
         """
-        _summary_:
+        Summary: This function removes extra spaces from the 'education' column in the provided DataFrame.
 
         Args:
-            df (pd.DataFrame): _description_
+            df (pd.DataFrame): Input DataFrame with the 'education' column.
 
         Returns:
-            pd.DataFrame: _description_
+            pd.DataFrame: Cleaned DataFrame with processed 'education' column.
+
         """
 
         logging.info("Inside step 02 of data cleaning.")
@@ -86,13 +81,13 @@ class CleaningData:
 
     def step_03_marital_status(self, df:pd.DataFrame) -> pd.DataFrame:
         """
-        _summary_:
+            Summary: This function removes extra spaces from the 'marital-status' column in the given DataFrame.
 
-        Args:
-            df (pd.DataFrame): _description_
+            Args:
+                df (pd.DataFrame): The input DataFrame containing the 'marital-status' column.
 
-        Returns:
-            pd.DataFrame: _description_
+            Returns:
+                pd.DataFrame: A cleaned DataFrame with the 'marital-status' column processed.
         """
 
         logging.info("Inside the step 03 of data cleaning.")
@@ -113,15 +108,17 @@ class CleaningData:
             raise CustomException(e, sys)
 
 
+
     def step_04_occupation(self, df:pd.DataFrame) -> pd.DataFrame:
         """
-        _summary_:
+        Summary: This function is designed to handle missing values and eliminate extra spaces in the 'occupation' column of a given DataFrame.
 
         Args:
-            df (pd.DataFrame): _description_
+            df (pd.DataFrame): The input dataframe containing the 'occupation' column.
 
         Returns:
-            pd.DataFrame: _description_
+            pd.DataFrame: A cleaned dataframe with the 'occupation' column processed.
+
         """
 
         logging.info("Inside step 04 of data cleaning.")
@@ -145,15 +142,23 @@ class CleaningData:
             raise CustomException(e, sys)
 
 
+
     def step_05(self, df:pd.DataFrame) -> pd.DataFrame:
         """
-        _summary_:
+        Summary:
+            This function is designed to remove non-essential columns from a given DataFrame.
 
         Args:
-            df (pd.DataFrame): _description_
+            df (pd.DataFrame): The input dataframe containing the following columns:
+                - 'fnlwgt': Final weight assigned to observations
+                - 'education-num': Number of years of education
+                - 'relationship': Relationship status
+                - 'race': Ethnicity or race
+                - 'sex': Gender
+                - 'native-country': Country of origin
 
         Returns:
-            pd.DataFrame: _description_
+            pd.DataFrame: A modified dataframe containing only the essential columns.
         """
 
         logging.info("Inside step 05 of data cleaning.")
@@ -170,15 +175,17 @@ class CleaningData:
             logging.info('Step 05 of data cleaning completed.')
             raise CustomException(e, sys)
 
+
+
     def step_06(self, df:pd.DataFrame) -> pd.DataFrame:
         """
-        _summary_: This function is created for removing the extra space from the data values of income column.
+        Summary: Removes extra spaces from the data values in the income column of the provided DataFrame.
 
         Args:
-            df (pd.DataFrame): data set containing the income column with the extra space in data values.
+            df (pd.DataFrame): The dataset containing the income column with extra spaces in data values.
 
         Returns:
-            pd.DataFrame: cleaned dataframe with new income column.
+            pd.DataFrame: A cleaned DataFrame with the income column having spaces removed.
         """
 
         logging.info("Inside the step 06 of data cleaning.")

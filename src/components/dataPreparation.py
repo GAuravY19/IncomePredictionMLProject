@@ -26,14 +26,15 @@ class DataPrepare:
 
     def readingData(self, path:str) -> pd.DataFrame:
         """
-        _summary_: This function loads the dataset, adds column names to it and then converts it to pandas Dataframe.
+        Summary : Load the dataset from a specified path, assign column names, and convert it to a pandas DataFrame.
 
         Args:
-            path (str): path where the raw data is stored.
+            path (str): The path to the raw data file (.data).
 
         Returns:
-            pd.DataFrame: A dataframe which is converted from .data file to pandas Dataframe with added column names.
+            pd.DataFrame: A DataFrame created from the .data file with assigned column names.
         """
+
 
         logging.info("Inside readingData function.")
 

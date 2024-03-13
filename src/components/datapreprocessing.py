@@ -13,18 +13,31 @@ from src.logger import logging
 
 
 class DataPreprocessing:
+    """
+    Summary: This class encapsulates essential functions (methods) for conducting feature engineering on a dataset.
+
+    Returns:
+        pd.DataFrame: Returns a refined dataframe optimized for model building.
+    """
 
     logging.info("Inside the DataPreprocessing function.")
 
-    def __init__(self, df:pd.DataFrame) -> pd.DataFrame:
+    def __init__(self, df:pd.DataFrame) -> None:
         logging.info("DataPreprocessing function initialized.")
 
         self.data = df
 
-        return self.data
-
 
     def step_01_Age(self, df:pd.DataFrame) -> pd.DataFrame:
+        """
+        _summary_: This function applies Min-Max scaling to the 'age' column in the input DataFrame.
+
+        Args:
+            df (pd.DataFrame): The input DataFrame containing the 'age' column to be scaled.
+
+        Returns:
+            pd.DataFrame: A new DataFrame with the 'age' column values scaled using Min-Max scaling.
+        """
 
         logging.info('Inside the step 01 of data preprocessing.')
 
@@ -46,6 +59,16 @@ class DataPreprocessing:
 
 
     def step_02_capital_gain(self, df:pd.DataFrame) -> pd.DataFrame:
+        """
+        _summary_: This function applies Min-Max scaling to the 'capital-gain' column in the input DataFrame.
+
+        Args:
+            df (pd.DataFrame): The input DataFrame containing the 'capital-gain' column to be scaled.
+
+        Returns:
+            pd.DataFrame: A new DataFrame with the 'capital-gain' column values scaled using Min-Max scaling.
+        """
+
 
         logging.info('Inside the step 02 of data preprocessing.')
 
@@ -68,6 +91,15 @@ class DataPreprocessing:
 
 
     def step_03_capital_loss(self, df:pd.DataFrame) -> pd.DataFrame:
+        """
+        _summary_: This function applies Min-Max scaling to the 'capital-loss' column in the input DataFrame.
+
+        Args:
+            df (pd.DataFrame): The input DataFrame containing the 'capital-loss' column to be scaled.
+
+        Returns:
+            pd.DataFrame: A new DataFrame with the 'capital-loss' column values scaled using Min-Max scaling.
+        """
 
         logging.info('Inside the step 03 of data preprocessing.')
 
@@ -90,6 +122,15 @@ class DataPreprocessing:
 
 
     def step_04_hours_per_week(self, df:pd.DataFrame) -> pd.DataFrame:
+        """
+        _summary_: This function applies Standard scaling to the 'hours-per-week' column in the input DataFrame.
+
+        Args:
+            df (pd.DataFrame): The input DataFrame containing the 'hours-per-week' column to be scaled.
+
+        Returns:
+            pd.DataFrame: A new DataFrame with the 'hours-per-week' column values scaled using Standard scaling.
+        """
 
         logging.info('Inside the step 04 of data preprocessing.')
 
@@ -112,6 +153,15 @@ class DataPreprocessing:
 
 
     def step_05_target(self, df:pd.DataFrame) -> pd.DataFrame:
+        """
+        _summary_: This function applies Label encoding to the 'target(income)' column in the input DataFrame.
+
+        Args:
+            df (pd.DataFrame): The input DataFrame containing the 'target(income)' column to be ecoded.
+
+        Returns:
+            pd.DataFrame: A new DataFrame with the 'target(income)' column values scaled using Label encoding.
+        """
 
         logging.info('Inside the step 05 of data preprocessing.')
 
@@ -136,6 +186,15 @@ class DataPreprocessing:
 
 
     def step_06_education(self, df:pd.DataFrame) -> pd.DataFrame:
+        """
+        _summary_: This function applies Ordinal encoding to the 'education' column in the input DataFrame.
+
+        Args:
+            df (pd.DataFrame): The input DataFrame containing the 'education' column to be encoded.
+
+        Returns:
+            pd.DataFrame: A new DataFrame with the 'education' column values scaled using Ordinal encoding.
+        """
 
         logging.info('Inside the step 06 of data preprocessing.')
 
@@ -160,6 +219,15 @@ class DataPreprocessing:
 
 
     def step_07_encoding(self, df:pd.DataFrame) -> pd.DataFrame:
+        """
+        _summary_: This function applies OneHot encoding to the 'workclass' and 'occupation' column in the input DataFrame.
+
+        Args:
+            df (pd.DataFrame): The input DataFrame containing the 'workclass' and 'occupation' column to be encoded.
+
+        Returns:
+            pd.DataFrame: A new DataFrame with the 'workclass' and 'occupation' column values scaled using OneHot encoding.
+        """
 
         logging.info('Inside the step 07 of data preprocessing.')
 
@@ -186,4 +254,35 @@ class DataPreprocessing:
 
         except Exception as e:
             logging.info('Step 07 of data preprocessing failed.')
+            raise CustomException(e, sys)
+
+    def step_08_restructuring(self, df:pd.DataFrame) -> pd.DataFrame:
+        """
+        _summary_: This function is designed to rearrange the order of columns within a dataset.
+
+        """
+        logging.info("Inside the step 08 of the Data Preprocessing.")
+
+        try:
+            new_order = ['age', 'new_education', 'new_workclass_Local-gov',
+                         'new_workclass_Never-worked', 'new_workclass_Private',
+                         'new_workclass_Self-emp-inc', 'new_workclass_Self-emp-not-inc',
+                         'new_workclass_State-gov', 'new_workclass_Without-pay',
+                         'new_occupation_Armed-Forces', 'new_occupation_Craft-repair',
+                         'new_occupation_Exec-managerial', 'new_occupation_Farming-fishing',
+                         'new_occupation_Handlers-cleaners', 'new_occupation_Machine-op-inspct',
+                         'new_occupation_Other-service', 'new_occupation_Priv-house-serv',
+                         'new_occupation_Prof-specialty', 'new_occupation_Protective-serv',
+                         'new_occupation_Sales', 'new_occupation_Tech-support',
+                         'new_occupation_Transport-moving','capital-gain', 'capital-loss',
+                         'hours-per-week', 'target']
+
+            df_new = df[new_order]
+
+            logging.info("Restructuring completed.")
+
+            return df_new
+
+        except Exception as e:
+            logging.info("step 08 of preprocessing failed.")
             raise CustomException(e, sys)
