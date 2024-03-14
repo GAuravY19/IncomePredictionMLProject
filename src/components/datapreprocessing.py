@@ -28,6 +28,7 @@ class DataPreprocessing:
         self.data = df
 
 
+
     def step_01_Age(self, df:pd.DataFrame) -> pd.DataFrame:
         """
         _summary_: This function applies Min-Max scaling to the 'age' column in the input DataFrame.
@@ -56,6 +57,7 @@ class DataPreprocessing:
         except Exception as e:
             logging.info('Step 01 of data preprocessing failed.')
             raise CustomException(e, sys)
+
 
 
     def step_02_capital_gain(self, df:pd.DataFrame) -> pd.DataFrame:
@@ -90,6 +92,7 @@ class DataPreprocessing:
             raise CustomException(e, sys)
 
 
+
     def step_03_capital_loss(self, df:pd.DataFrame) -> pd.DataFrame:
         """
         _summary_: This function applies Min-Max scaling to the 'capital-loss' column in the input DataFrame.
@@ -121,6 +124,7 @@ class DataPreprocessing:
             raise CustomException(e, sys)
 
 
+
     def step_04_hours_per_week(self, df:pd.DataFrame) -> pd.DataFrame:
         """
         _summary_: This function applies Standard scaling to the 'hours-per-week' column in the input DataFrame.
@@ -150,6 +154,7 @@ class DataPreprocessing:
         except Exception as e:
             logging.info('Step 04 of data preprocessing failed.')
             raise CustomException(e, sys)
+
 
 
     def step_05_target(self, df:pd.DataFrame) -> pd.DataFrame:
@@ -185,6 +190,7 @@ class DataPreprocessing:
             raise CustomException(e, sys)
 
 
+
     def step_06_education(self, df:pd.DataFrame) -> pd.DataFrame:
         """
         _summary_: This function applies Ordinal encoding to the 'education' column in the input DataFrame.
@@ -216,6 +222,7 @@ class DataPreprocessing:
         except Exception as e:
             logging.info('Step 06 of data preprocessing failed.')
             raise CustomException(e, sys)
+
 
 
     def step_07_encoding(self, df:pd.DataFrame) -> pd.DataFrame:
@@ -256,6 +263,8 @@ class DataPreprocessing:
             logging.info('Step 07 of data preprocessing failed.')
             raise CustomException(e, sys)
 
+
+
     def step_08_restructuring(self, df:pd.DataFrame) -> pd.DataFrame:
         """
         _summary_: This function is designed to rearrange the order of columns within a dataset.
@@ -286,3 +295,5 @@ class DataPreprocessing:
         except Exception as e:
             logging.info("step 08 of preprocessing failed.")
             raise CustomException(e, sys)
+
+
