@@ -5,3 +5,5 @@ sklearn
 scikit-learn
 notebook
 scipy
+flask
+
