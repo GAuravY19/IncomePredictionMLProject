@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import sys
+import pickle
 
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.preprocessing import StandardScaler
@@ -10,6 +11,7 @@ from sklearn.preprocessing import OneHotEncoder
 
 from src.exceptions import CustomException
 from src.logger import logging
+from src.utils.save_pickle import save_pickle_file
 
 
 class DataPreprocessing:
@@ -51,6 +53,8 @@ class DataPreprocessing:
 
             df['age'] = age_scale.transform(df[['age']])
 
+            save_pickle_file('D:/IncomeML Model/deployment/server/artifacts/age_scale.pkl', age_scale)
+
             logging.info('Step 01 of data preprocessing completed.')
             return df
 
@@ -82,6 +86,8 @@ class DataPreprocessing:
             capital_gain_scale.fit(df[['capital-gain']])
 
             df['capital-gain'] = capital_gain_scale.transform(df[['capital-gain']])
+
+            save_pickle_file('D:/IncomeML Model/deployment/server/artifacts/capital_gain.pkl', capital_gain_scale)
 
             logging.info('Step 02 of data preprocessing completed.')
 
@@ -115,6 +121,8 @@ class DataPreprocessing:
 
             df['capital-loss'] = captial_loss_scale.transform(df[['capital-loss']])
 
+            save_pickle_file('D:/IncomeML Model/deployment/server/artifacts/capital_loss.pkl', captial_loss_scale)
+
             logging.info('Step 03 of data preprocessing completed.')
 
             return df
@@ -146,6 +154,8 @@ class DataPreprocessing:
             hours_per_week_scale.fit(df[['hours-per-week']])
 
             df['hours-per-week'] = hours_per_week_scale.transform(df[['hours-per-week']])
+
+            save_pickle_file('D:/IncomeML Model/deployment/server/artifacts/hour_per_week.pkl', hours_per_week_scale)
 
             logging.info('Step 04 of data preprocessing completed.')
 
@@ -181,6 +191,8 @@ class DataPreprocessing:
 
             df_new = df.drop(['income'], axis = 'columns')
 
+            save_pickle_file('D:/IncomeML Model/deployment/server/artifacts/lb_encode_target.pkl', Lb_encoder)
+
             logging.info('Step 05 of data preprocessing completed.')
 
             return df_new
@@ -214,6 +226,8 @@ class DataPreprocessing:
             ord_enc.fit(df[['new_education']])
 
             df['new_education'] = ord_enc.transform(df[['new_education']])
+
+            save_pickle_file('D:/IncomeML Model/deployment/server/artifacts/education.pkl', ord_enc)
 
             logging.info('Step 06 of data preprocessing completed.')
 

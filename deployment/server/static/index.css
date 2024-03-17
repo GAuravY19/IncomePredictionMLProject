@@ -1,0 +1,51 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.form-box{
+    height: 80%;
+    width: 40%;
+    border: 2px solid red;
+    border-radius: 15px;
+    margin-left: 30%;
+}
+
+.form-label{
+    padding-left: 15px;
+}
+
+legend{
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+
+.form-control{
+    border: 2px solid black;
+    width: 90%;
+    margin-left: 28px;
+}
+
+.form-select{
+    border: 2px solid black;
+    width: 90%;
+    margin-left: 28px;
+}
+
+.pad-btn{
+    margin-left: 40%;
+    margin-bottom: 10px;
+}
+
+
+.form-box-result{
+    width: 45%;
+    border: 2px solid green;
+    border-radius: 15px;
+    margin-left: 26%;
+    margin-top: 19%;
+    font-size: 35px;
+    padding-left: 70px;
+    padding-top: 10px;
+}
